@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			#oUl li ul{
+				display: none;
+			}
+			#oUl li ul.show{
+				display: block;
+			}
+			#oUl li ul.hide{
+				display: none;
+			}
+			#oUl li h3 span{
+				padding: 0px 10px;
+			}
+			#oUl li h3.padL{
+				padding-left: 30px;
+			}
+			li{
+				list-style: none;
+			}
+		</style>
+
+	</head>
+
+<body>
+	<ul id="oUl">
+		<!--<li>
+			<h3>
+				<span>+</span>
+				第一级菜单
+			</h3>
+			<ul class="show">
+				<li>
+					<h3>
+						<span>+</span>
+						第二级菜单
+					</h3>
+				</li>
+			</ul>
+		</li>-->
+	</ul>
+</body>
+<script>
+var arr = [
+{
+    title : "第一级菜单",
+    child : [
+    	{title:"第二集菜单"},
+        {title:"第二集菜单",
+        child:[
+        		{title:"第三集菜单"},
+        		{title:"第三集菜单",
+        		child:[
+        			{title:"第四集菜单"},
+        			{title:"第四集菜单"},
+        			{title:"第四集菜单"}
+        		]
+        		},
+        		{title:"第三集菜单"}
+        	]
+    	},
+        {
+        	title:"第二集菜单",
+        	child:[
+        		{title:"第三集菜单"},
+        		{title:"第三集菜单"}
+        	]
+        }
+    ]
+},
+{
+    title : "第一级菜单",
+    child : [
+    	{title:"第二集菜单"},
+        {title:"第二集菜单",
+        child:[
+        		{title:"第三集菜单"},
+        		{title:"第三集菜单",
+        		child:[
+        			{title:"第四集菜单"},
+        			{title:"第四集菜单"},
+        			{title:"第四集菜单"}
+        		]
+        		},
+        		{title:"第三集菜单"}
+        	]
+    	},
+        {
+        	title:"第二集菜单",
+        	child:[
+        		{title:"第三集菜单"},
+        		{title:"第三集菜单"}
+        	]
+        }
+    ]
+},
+{
+	title:"第一集菜单",
+	child:[
+		{title:"第二集菜单"},
+		{title:"第二集菜单"}
+	]
+},
+];
+
+
+
+/*----------------------------------------------------------------------------*/
+	//生成
+	var oUl = document.getElementById("oUl");
+	for (var i = 0; i < arr.length; i++) {
+		var li = document.createElement("li");
+		li.innerHTML = '<h3><span>+</span>'+arr[i].title+'</h3>';
+		oUl.appendChild(li);
+		fn(arr[i].child,li);
+	}
+	
+	function fn(childS,p){
+		for (var i = 0; i < childS.length; i++) {
+			var ul = document.createElement("ul");
+			var li = document.createElement("li");
+			li.innerHTML = '<h3><span>+</span>'+childS[i].title+'</h3>';
+			ul.appendChild(li);
+			p.appendChild(ul);
+			if(childS[i].child){
+				fn(childS[i].child,li);
+			}
+		}	
+	}
+	
+	
+/*----------------------------------------------------------------------------*/
+	//点击
+	var h3s = document.getElementsByTagName("h3");
+	var h3ss = null;
+	var close = null;
+	for (var i = 0; i < h3s.length; i++) {
+		h3s[i].onOff = true;
+		h3s[i].onclick = function(){
+			var next = this.nextElementSibling;
+			var childs = this.parentNode.children;
+			if(next){
+				if(this.onOff){
+					for (var i = 0; i < childs.length; i++) {
+						childs[i].className = 'show';
+					}
+					this.children[0].innerHTML = '-';
+					this.onOff = !this.onOff;
+				}else{
+					for (var i = 1; i < childs.length; i++) {
+						close = childs[i].getElementsByTagName('ul');
+						h3ss = childs[i].getElementsByTagName('h3');
+						childs[i].className = 'hide';
+						for (var j = 0; j < close.length; j++) {
+							close[j].className = 'hide';
+						}
+						for (var j = 0; j < h3ss.length; j++) {
+							h3ss[j].children[0].innerHTML = '+';
+							h3ss[j].onOff = true;
+						}
+					}
+					this.children[0].innerHTML = '+';
+					this.onOff = !this.onOff;
+				}
+			}
+		}
+	}
+
+
+</script>
+</html>
