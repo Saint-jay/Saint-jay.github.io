@@ -1,175 +1,137 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title></title>
-		<style>
-			#oUl li ul{
-				display: none;
-			}
-			#oUl li ul.show{
-				display: block;
-			}
-			#oUl li ul.hide{
-				display: none;
-			}
-			#oUl li h3 span{
-				padding: 0px 10px;
-			}
-			#oUl li h3.padL{
-				padding-left: 30px;
-			}
-			li{
-				list-style: none;
-			}
-		</style>
-
+		<meta charset="UTF-8">
+		<title>百度云</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/index.css" />
 	</head>
-
-<body>
-	<ul id="oUl">
-		<!--<li>
-			<h3>
-				<span>+</span>
-				第一级菜单
-			</h3>
-			<ul class="show">
-				<li>
-					<h3>
-						<span>+</span>
-						第二级菜单
-					</h3>
+	<body>
+		<header>
+			<dl class="header clearfix">
+				<dt class="header_logo fl"><a href="javascript:;" title="百度网盘"></a></dt>
+				<dd class="fl header_link clearfix">
+					<span class="fl">
+						<a href="javascript:;" class="color_blue">网盘</a>
+						<p class="blue_line"></p>
+					</span>
+					<span class="fl">
+						<a href="javascript:;">分享</a>
+					</span>
+					<span class="fl">
+						<a href="javascript:;">更多</a>
+					</span>
+				</dd>
+				<dd class="fr header_info clearfix">
+					<p class="fl">
+						<i class="user_pic fl"></i>
+						<span class="user_name fl">翊丶水里的鱼</span>
+						<a href="javascript:;" class="user_level fl"></a>
+						<i class="ico fl"></i>
+					</p>
+					<i class="sep fl"></i>
+					<a href="javascript:;" class="app_download fl">客户端下载</a>
+					<a href="javascript:;" class="app_notice fl"></a>
+					<a href="javascript:;" class="app_feedback fl"></a>
+					<a href="javascript:;" class="app_theme fl"></a>
+					<a href="javascript:;" class="app_center fl">会员中心</a>
+				</dd>
+				<dd class="fr header_new"><a  href="javascript:;">百度网盘升级公告</a></dd>
+			</dl>
+		</header>
+		<!--*********************************body*********************************************-->
+		<div id="body" class="clearfix">
+			<ul id="body_bot">
+				<li class="body_bot_firstLi"><span class="quota_full"></span></li>
+				<li class="body_bot_twotLi clearfix"><i class="fl">51.52G/5152G</i><a href="javascript:;" class="fr color_blue">扩容</a></li>
+				<li class="body_bot_threetLi clearfix">
+					<a href="javascript:;" class="fl pc_ico"></a>
+					<a href="javascript:;" class="fl android_ico"></a>
+					<a href="javascript:;" class="fl apple_ico"></a>
+					<a href="javascript:;" class="fl more_ico"></a>
 				</li>
 			</ul>
-		</li>-->
-	</ul>
-</body>
-<script>
-var arr = [
-{
-    title : "第一级菜单",
-    child : [
-    	{title:"第二集菜单"},
-        {title:"第二集菜单",
-        child:[
-        		{title:"第三集菜单"},
-        		{title:"第三集菜单",
-        		child:[
-        			{title:"第四集菜单"},
-        			{title:"第四集菜单"},
-        			{title:"第四集菜单"}
-        		]
-        		},
-        		{title:"第三集菜单"}
-        	]
-    	},
-        {
-        	title:"第二集菜单",
-        	child:[
-        		{title:"第三集菜单"},
-        		{title:"第三集菜单"}
-        	]
-        }
-    ]
-},
-{
-    title : "第一级菜单",
-    child : [
-    	{title:"第二集菜单"},
-        {title:"第二集菜单",
-        child:[
-        		{title:"第三集菜单"},
-        		{title:"第三集菜单",
-        		child:[
-        			{title:"第四集菜单"},
-        			{title:"第四集菜单"},
-        			{title:"第四集菜单"}
-        		]
-        		},
-        		{title:"第三集菜单"}
-        	]
-    	},
-        {
-        	title:"第二集菜单",
-        	child:[
-        		{title:"第三集菜单"},
-        		{title:"第三集菜单"}
-        	]
-        }
-    ]
-},
-{
-	title:"第一集菜单",
-	child:[
-		{title:"第二集菜单"},
-		{title:"第二集菜单"}
-	]
-},
-];
-
-
-
-/*----------------------------------------------------------------------------*/
-	//生成
-	var oUl = document.getElementById("oUl");
-	for (var i = 0; i < arr.length; i++) {
-		var li = document.createElement("li");
-		li.innerHTML = '<h3><span>+</span>'+arr[i].title+'</h3>';
-		oUl.appendChild(li);
-		fn(arr[i].child,li);
-	}
-	
-	function fn(childS,p){
-		for (var i = 0; i < childS.length; i++) {
-			var ul = document.createElement("ul");
-			var li = document.createElement("li");
-			li.innerHTML = '<h3><span>+</span>'+childS[i].title+'</h3>';
-			ul.appendChild(li);
-			p.appendChild(ul);
-			if(childS[i].child){
-				fn(childS[i].child,li);
-			}
-		}	
-	}
-	
-	
-/*----------------------------------------------------------------------------*/
-	//点击
-	var h3s = document.getElementsByTagName("h3");
-	var h3ss = null;
-	var close = null;
-	for (var i = 0; i < h3s.length; i++) {
-		h3s[i].onOff = true;
-		h3s[i].onclick = function(){
-			var next = this.nextElementSibling;
-			var childs = this.parentNode.children;
-			if(next){
-				if(this.onOff){
-					for (var i = 0; i < childs.length; i++) {
-						childs[i].className = 'show';
-					}
-					this.children[0].innerHTML = '-';
-					this.onOff = !this.onOff;
-				}else{
-					for (var i = 1; i < childs.length; i++) {
-						close = childs[i].getElementsByTagName('ul');
-						h3ss = childs[i].getElementsByTagName('h3');
-						childs[i].className = 'hide';
-						for (var j = 0; j < close.length; j++) {
-							close[j].className = 'hide';
-						}
-						for (var j = 0; j < h3ss.length; j++) {
-							h3ss[j].children[0].innerHTML = '+';
-							h3ss[j].onOff = true;
-						}
-					}
-					this.children[0].innerHTML = '+';
-					this.onOff = !this.onOff;
-				}
-			}
-		}
-	}
-
-
-</script>
+			<ul class="body_left fl">
+				<li class="body_left_lis">
+					<a href="javascript:;" class="color_blue all_ico">全部文件</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">图片</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">文档</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">视频</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">种子</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">音乐</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;">其他</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;" class="myShare_ico">我的分享</a>
+				</li>
+				<li class="body_left_lis">
+					<a href="javascript:;" class="recycleBin_ico">回收站</a>
+				</li>
+				<!--<li id="blank"></li>-->
+			</ul>
+			<!--******************************************-->
+			<div class="body_right fr">
+				<ul class="body_right_top clearfix">
+					<li class="fl body_right_top_left clearfix">
+						<a href="javascript:;" class="uploading fl">上传</a>
+						<a href="javascript:;" class="newFolder fl color_blue">新建文件夹</a>
+						<a href="javascript:;" class="delet fl color_blue">删除</a>
+						<a href="javascript:;" class="rename fl color_blue">重命名</a>
+					</li>
+					<li class="fr body_right_top_right">
+						<form class="fl clearfix">
+							<input type="text" name="txt" id="txt" placeholder="搜索您的文件" class="fl"/>
+							<input type="button" name="btn" id="btn" value="" class="fl" />
+						</form>
+						<a href="javascript:;" class="fl sort"></a>
+						<a href="javascript:;" class="fl switch"></a>
+					</li>
+				</ul>
+				<ul class="body_right_mid clearfix">
+					<li class="fl clearfix">
+						<i class="fl claerfix">全部文件</i><i class="fl claerfix"></i>
+					</li>
+					<li class="fr load_num"></li>
+				</ul>
+				<ul class="body_right_bot clearfix">
+					<li class="body_right_bot_k fl"></li>
+					<li class="body_right_bot_text fl">全选</li>
+				</ul>
+				<!--*****************************box******************************************-->
+				<div class="box clearfix">
+					<!--<dl class="box_folder fl">
+						<dt><a href="javascript:;"></a></dt>
+						<dd><a href="javascript:;" class="box_folder_new">新建文件夹</a></dd>
+						<a href="javascript:;" class="box_folder_check"></a>
+					</dl>-->
+					<!--**************************************************************-->
+					<!--<p class="box_inp">
+							<input type="text" class="text fl" value="新建文件夹" />
+							<a href="javascript:;" class="fl true"></a>
+							<a href="javascript:;" class="fl false"></a>
+					</p>-->
+				</div>
+			</div>
+		</div>
+		<!--*******************功能区**********************-->
+		<div id="selectBox"></div>
+		<ul id="ridow"></ul>
+		<ul id="view"></ul>
+		<div id="copy"></div>
+		<!--************************************javascript***************************************-->
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/switch.js" type="text/javascript" charset="utf-8"></script>
+	</body>
 </html>
