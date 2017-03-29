@@ -1,4 +1,4 @@
-var arr = [{id:1,name:'AJAX',pid:0},{id:2,name:'vue.js',pid:0},{id:3,name:'正则表达式',pid:0},{id:4,name:'Jquery',pid:0},{id:5,name:'html',pid:2},{id:6,name:'css',pid:2},{id:7,name:'img',pid:4},{id:8,name:'js',pid:4}];
+var arr = [{id:1,name:'AJAX',pid:0},{id:2,name:'vue.js',pid:0},{id:3,name:'正则表达式',pid:0},{id:4,name:'Jquery',pid:0},{id:5,name:'html',pid:2},{id:6,name:'css',pid:2},{id:7,name:'img',pid:4},{id:8,name:'js',pid:4}]; 
 var box = document.getElementsByClassName("box")[0],
 	dls = box.getElementsByClassName("box_folder");
 var as = document.getElementsByClassName("box_folder_check");
