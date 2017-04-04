@@ -1,0 +1,71 @@
+
+
+@font-face {
+    font-family: '苹方-简';
+    src: url('font/苹方-简.TTF') format('truetype');
+}
+
+
+/*--------------reset--------------*/
+body,p,h1,h2,h3,h4,h5,h6,dl,dd{
+	margin:0;	
+}
+body{
+	font:12px arial;	
+	-moz-user-select: none; /*火狐*/
+	-webkit-user-select: none; /*webkit浏览器*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*早期浏览器*/
+	user-select: none;
+	overflow: hidden;
+}
+ul,ol{
+	margin:0;
+	padding:0;
+	list-style:none;	
+}
+h1,h2,h3,h4,h5,h6,strong,b{
+	font-weight:normal;	
+}
+a{
+	text-decoration:none;
+	color:black;
+}
+img{
+	vertical-align:top;
+	border:none;	
+}
+i,em{
+	font-style:normal;	
+}
+th,td{
+	padding:0;
+}
+form{
+	margin:0;
+}
+input{
+	padding:0;
+	background:none;
+	border:0;
+}
+.clearfix:after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+.clearfix{
+	zoom:1;
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+
+body{
+	background-color: #FFFFFF;
+}
