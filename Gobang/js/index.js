@@ -17,7 +17,7 @@ let $ = (id)=>{
 }
 
 let drawChessBoard = () => {
-	context.strokeStyle = "#ffffff";
+	context.strokeStyle = "#000000";
 	for (var i = 0; i < 15; i++) {	
 		context.moveTo( 15 , 15+i*30 );
 		context.lineTo( 435 , 15+i*30 );
