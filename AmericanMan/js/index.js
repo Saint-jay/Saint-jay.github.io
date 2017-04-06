@@ -456,5 +456,5 @@ window.onresize = function(){
 	$('#bottom_bar li').height($('#bottom_bar li').width()/0.85)
 }
 
-
+ 
 }
