@@ -209,7 +209,9 @@ canvas{
 	color: rgba(0,0,0,.4);
 }
 
-
+#selfDetails{
+	pointer-events: none;
+}
 #selfD h3{
 	font-size:4vw;
 }
