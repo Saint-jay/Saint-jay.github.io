@@ -1,13 +1,13 @@
-window.onload = function(){
+function Show(){
 window.location.hash = '';
-setTimeout(()=>{
+sTO = setTimeout(()=>{
 	$('#loading').css('display','none')
 	if($('#loading').css('display') == 'none'){
 		window.location.hash = 'man=trump';
 	}
-
+	sTO = null;
 },2000)
-	
+
 
 //init
 $('body').height(window.innerHeight)
@@ -99,6 +99,7 @@ $('#prev').click(() => {
 		}
 	});
 })
+
 //下一个
 $('#next').click(() => {
 	let n = $('.filter').eq(0).attr('num');
@@ -117,6 +118,7 @@ $('#next').click(() => {
 
 //svgPath变形函数
 function path(d,fill,fillOpacity,rectFill,viewBox,i){
+	$('path').eq(i).css('transition','0s')
 	$('path').eq(i).css('transition','.5s')
 	$('path').eq(i).attr({
 		'd' : d[i],
@@ -145,8 +147,9 @@ function hashEvent(name){
 		$('#nameDetails div').css({'transition':'0s','transform':'translate3D(0,-100%,0)'})
 		$('#name div').html(sName)
 		$('#Details div').html(sDetails)
-		setTimeout(() => {
+		sTT = setTimeout(() => {
 			$('#nameDetails div').css({'transition':'1s','transform':'translate3D(0,0%,0)'})
+			sTT = null;
 		},100)
 		//新增任职年份
 		$('#years').html(years)
@@ -298,19 +301,21 @@ $('#about').click(() => {
 	onOff = true;
 	menuLine('rotate(0deg)','rotate(0deg)','0px','1','0px')
 	$('#content').css('transform','translateY(0px)')
-	setTimeout(() => {
+	sTTr = setTimeout(() => {
 		$('#self').css({
 			'transform': 'translate3d(0%,0,0)',
 			'opacity':'1'
 		})
-		setTimeout(() => {
+		sTF = setTimeout(() => {
 			$.each($('polygon'), function(i) {
 				$('polygon').eq(i).css({
 					'transition':Math.random()*6+'s',
 					'transform': 'translateY(0px)'
 				})
 			});
+			sTF = null;
 		},1500)
+		sTTr = null;
 	},500)
 })
 
@@ -449,6 +454,12 @@ function ballMouse(obj){
 	let disY = Math.abs(moveY - obj.y)
 	return Math.sqrt(disX*disX + disY*disY)
 }
+
+
+
+
+
+
 window.onresize = function(){
 	can.width = window.innerWidth;
 	can.height = window.innerHeight;
@@ -456,5 +467,5 @@ window.onresize = function(){
 	$('#bottom_bar li').height($('#bottom_bar li').width()/0.85)
 }
 
- 
+
 }
